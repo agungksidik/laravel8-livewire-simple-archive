@@ -17,9 +17,7 @@ class DatabaseSeeder extends Seeder
             PermissionTableSeeder::class,            
             CreateSuperAdminUserSeeder::class,
             CreateAdminUserSeeder::class,
-            CreateAgenUserSeeder::class,
-            ContactSeeder::class,
-            TaskSeeder::class,
+            CreatePimpinanUserSeeder::class,            
           ]);
     }
 }

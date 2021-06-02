@@ -92,4 +92,9 @@
           </div>
         </div>
       </div>
+      <div class="card">
+        <div class="card-body">
+            @livewire('permissions.roles')
+        </div>
+      </div>
 @endsection

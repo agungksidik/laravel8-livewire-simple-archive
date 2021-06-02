@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class CreateAgenUserSeeder extends Seeder
+class CreatePimpinanUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,19 +16,19 @@ class CreateAgenUserSeeder extends Seeder
      */
     public function run()
     {
-        $userAgen = User::create([
-        	'name' => 'Agen Xylo', 
-        	'email' => 'agen@gmail.com',
+        $userPimpinan = User::create([
+        	'name' => 'Pimpinan', 
+        	'email' => 'pimpinan@gmail.com',
         	'password' => bcrypt('123456')
         ]);
 
-        $agen = Role::create(['name' => 'agen'])
+        $pimpinan = Role::create(['name' => 'pimpinan'])
             ->givePermissionTo(['create task', 'edit task', 'show task', 'delete task']);       
 
-        $userAgen->assignRole($agen);
+        $userPimpinan->assignRole($pimpinan);
 
         User::factory(50)->create()->each(function ($user) {
-            $user->assignRole('agen'); 
+            $user->assignRole('pimpinan'); 
         });
     }
 }

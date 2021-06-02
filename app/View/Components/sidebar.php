@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Spatie\Permission\Models\Role;
 
 class sidebar extends Component
 {
@@ -23,6 +24,7 @@ class sidebar extends Component
      */
     public function render()
     {
-        return view('components.sidebar');
+        $roles = Role::get();
+        return view('components.sidebar', compact('roles'));        
     }
 }
