@@ -26,7 +26,8 @@
     </div>
     
     <div class="card">
-        <div class="card-body">            
+        <div class="card-body"> 
+            <h4 class="card-title">Role Data</h4>           
                 <div class="row justify-content-between mx-2">
                     <div class="col-md-6">
                         <div class="form-inline text-left">

@@ -56,6 +56,9 @@
     <script src="/js/dataTables.bootstrap4.js"></script>
     <!-- End custom js for this page-->
     <script src="/js/jquery.cookie.js" type="text/javascript"></script>
+    <!-- Custom js for this page-->
+  <script src="/js/file-upload.js"></script>
+  <!-- End custom js for this page-->
     @livewireScripts
 </body>
 

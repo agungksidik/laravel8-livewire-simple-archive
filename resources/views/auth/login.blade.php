@@ -3,7 +3,7 @@
 @section('auth')
     <div class="auth-form-transparent text-left p-3">
         <div class="brand-logo text-left">
-            <img src="{{asset('images/logo-uniga.png')}}" alt="logo">
+            <img src="{{asset('images/logo.png')}}" alt="logo">
         </div>
         <h3 class="font-weight-bold">Silahkan login</h3>
         {{-- <h6 class="font-weight-light">Happy to see you again!</h6> --}}

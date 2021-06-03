@@ -3,7 +3,7 @@
 @section('auth')
 <div class="auth-form-transparent text-left p-3">
     <div class="brand-logo">
-      <img src="{{asset('images/logo-uniga.png')}}" alt="logo">
+      <img src="{{asset('images/logo.png')}}" alt="logo">
     </div>
     <h4>Registrasi</h4>
     {{-- <h6 class="font-weight-light">Join us today! It takes only few steps</h6> --}}

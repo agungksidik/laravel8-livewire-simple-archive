@@ -13,7 +13,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="documentation/documentation.html">
+        <a class="nav-link" href="{{ route('document.index') }}">
         <i class="mdi mdi-book-open menu-icon"></i>
         <span class="menu-title">Dokumen</span>
         </a>
