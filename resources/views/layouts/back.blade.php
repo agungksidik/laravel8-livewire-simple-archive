@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
 @section('body') 
-        @yield('content')
-        @yield('script')
+        @yield('content')        
+@endsection
+@section('script')
+        @yield('custom_script')
 @endsection

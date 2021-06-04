@@ -2,9 +2,12 @@
 
 @section('content')   
 <div class="card">
-    <div class="card-body"> 
-        <h4 class="card-title">List Document</h4>       
-        <a href="{{ route('document.add') }}" class="btn btn-primary mb-2">Create Document</a>    
+    <div class="card-body">     
+        <div class="row justify-content-between mx-2 my-4">
+            <h4 class="card-title">List Document</h4>       
+            <a href="{{ route('document.add') }}" class="btn btn-info">Create Document</a>    
+        </div>    
+        
             <div class="row justify-content-between mx-2">
                 <div class="col-md-6">
                     <div class="form-inline text-left">
@@ -34,7 +37,8 @@
                     <th>#</th>
                     <th>Document Name</th>
                     <th>File Name</th>
-                    <th>Created at</th>
+                    <th>Create by</th>
+                    <th class="text-center">Created at</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -44,18 +48,16 @@
                         <td width="30">{{ $index + 1 }}</td>
                         <td>{{ $document->name }}</td>
                         <td>{{ $document->file }}</td>
-                        <td>{{ $document->created_at->format('d F y') }}</td>
+                        <td>{{ $document->user->name }}</td>
+                        <td class="text-center">{{ $document->created_at->format('d F y') }}</td>
                         <td class="text-center" width="200">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="{{ route('document.download', [$document->path, $document->file]) }}" class="btn btn-outline-secondary">
+                                <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Download document" href="{{ route('document.download', [$document->path, $document->file]) }}" class="btn btn-outline-info">
                                   <i class="mdi mdi-download"></i>
                                 </a>
-                                <button type="button" class="btn btn-outline-secondary">
-                                  <i class="mdi mdi-calendar"></i>
-                                </button>
-                                <button type="button" class="btn btn-outline-secondary">
+                                <a data-toggle="tooltip" data-placement="top" title="" data-original-title="View history document" href="" class="btn btn-outline-info">
                                   <i class="mdi mdi-clock"></i>
-                                </button>
+                                </a>
                               </div>
                         </td>
                     </tr>
@@ -65,4 +67,9 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('custom_script')
+    <script src="/js/tooltips.js"></script>
+    <script src="/js/popover.js"></script>
 @endsection

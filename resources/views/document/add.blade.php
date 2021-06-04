@@ -33,10 +33,17 @@
                   </div>
                   
                   <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                  <button class="btn btn-light">Cancel</button>
+                  <a href="{{ route('document.index') }}" class="btn btn-light">Cancel</a>
                 </form>
               </div>
             </div>
           </div>
     </div>
+@endsection
+
+@section('custom_script')
+    <!-- End custom js for this page-->
+    <script src="/js/jquery.cookie.js" type="text/javascript"></script>
+    <!-- Custom js for this page-->
+    <script src="/js/file-upload.js"></script>
 @endsection

@@ -11,5 +11,7 @@ class Document extends Model
 
     protected $fillable = ['name', 'path', 'file'];
 
-
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
