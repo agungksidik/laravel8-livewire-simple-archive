@@ -1,19 +1,15 @@
 @extends('layouts.app')
 
-@section('content')
+@section('content')  
   <div class="row">
     <div class="col-md-12 grid-margin">
         <div class="d-flex justify-content-between flex-wrap">
             <div class="d-flex align-items-end flex-wrap">
                 <div class="mr-md-3 mr-xl-5">
-                    <h2>Hi, {{ $user ?? 'User' }}</h2>
+                    <h2>Hi, {{ Auth::user()->name ?? 'User' }}</h2>
                     {{-- <p class="mb-md-0">Your analytics dashboard template.</p> --}}
                 </div>
-                <div class="d-flex">
-                    <i class="mdi mdi-home text-muted hover-cursor"></i>
-                    <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
-                    {{-- <p class="text-primary mb-0 hover-cursor">Analytics</p> --}}
-                </div>
+                
             </div>
             <div class="d-flex justify-content-between align-items-end flex-wrap">
                 <button type="button" class="btn btn-light bg-white btn-icon mr-3 d-none d-md-block ">
@@ -93,34 +89,26 @@
     </div>   
   </div>
   <div class="row">
-    <div class="col-lg-6 grid-margin stretch-card">
+    <div class="col-md-4 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Download Log</h4>          
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th width="200px">User</th>
-                  <th>Document</th>
-                  <th>Time</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Agung Sidik M</td>
-                  <td>Format Cuti</td>
-                  <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
-                  <td style="width=10%;"><label class="badge badge-success">Download document</label></td>
-                </tr>                
-              </tbody>
-            </table>
-          </div>
+          <h4 class="card-title">Download Log</h4>
+          <ul class="bullet-line-list">
+            @foreach ($downloads as $download)
+              <li>
+                <h6>{{ $download->user->name }}</h6>
+                <p>melakukan download document <strong>{{ $download->h_document->file }}</strong></p>
+                <p class="text-muted mb-4">
+                  <i class="mdi mdi-clock-outline"></i>
+                  {{ $download->created_at->diffForHumans() }}
+                </p>
+              </li>
+            @endforeach
+          </ul>
         </div>
       </div>
     </div>
-    <div class="col-lg-6 grid-margin stretch-card">
+    <div class="col-lg-8 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Activity Log</h4>
@@ -129,23 +117,36 @@
               <thead>
                 <tr>
                   <th>User</th>
-                  <th>Document</th>
-                  <th>Time</th>
+                  <th>Document Name</th>                  
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Jacob</td>
-                  <td>Photoshop</td>
-                  <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
-                  <td><label class="badge badge-danger">Create</label></td>
-                </tr>                
+                @foreach ($activities as $activity)
+                  <tr>
+                    <td>{{ $activity->user->name }}</td>
+                    <td>{{ $activity->h_document->file }}</td>                  
+                    <td>  
+                      @if ($activity->action == 'create')
+                        <label class="badge badge-success">{{ $activity->action }}</label>
+                      @elseif ($activity->action == 'update')
+                        <label class="badge badge-warning">{{ $activity->action }}</label>
+                      @elseif ($activity->action == 'delete')
+                        <label class="badge badge-danger">{{ $activity->action }}</label>
+                      @elseif ($activity->action == 'download')
+                        <label class="badge badge-info">{{ $activity->action }}</label>
+                      @endif                      
+                    </td>
+                  </tr> 
+                @endforeach                               
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="row">
+    
   </div>
 @endsection

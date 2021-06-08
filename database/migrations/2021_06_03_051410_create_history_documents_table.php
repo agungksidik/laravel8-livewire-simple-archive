@@ -14,10 +14,12 @@ class CreateHistoryDocumentsTable extends Migration
     public function up()
     {
         Schema::create('history_documents', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->unsignedInteger('document_id');
             $table->string('path');
             $table->string('file');
+            $table->string('slug');
+            $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
             $table->timestamps();
         });
     }

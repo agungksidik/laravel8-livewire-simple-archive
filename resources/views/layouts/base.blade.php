@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <!-- Required meta tags -->
+<head>  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>{{ $title ?? config('app.name') }}</title>
-  <!-- plugins:css -->
+  <title>{{ $title ?? config('app.name') }}</title>  
   <link rel="stylesheet" href="/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/vendors/base/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
   <link rel="stylesheet" href="/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-  <!-- endinject -->
+  <link rel="stylesheet" href="/vendors/jquery-toast-plugin/jquery.toast.min.css">
   <link rel="shortcut icon" href="/images/favicon.ico" />
   @livewireStyles
 </head>
@@ -34,22 +28,14 @@
         </div>
       <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
     
-    <!-- plugins:js -->
     <script src="/vendors/base/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-  
-    <!-- End plugin js for this page-->
-    <!-- inject:js -->
+    
     <script src="/js/off-canvas.js"></script>
     <script src="/js/hoverable-collapse.js"></script>
     <script src="/js/template.js"></script>
-    <!-- endinject -->
-    
-
+   
     @yield('script')
-    <!-- End custom js for this page-->
     @livewireScripts
 </body>
 

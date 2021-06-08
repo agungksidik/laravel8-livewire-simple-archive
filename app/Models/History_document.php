@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class History_document extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['document_id', 'path', 'file', 'slug'];
+
+    public function document() {
+        return $this->belongsTo(Document::class);
+    }
+
 }

@@ -17,13 +17,7 @@
         <i class="mdi mdi-book-open menu-icon"></i>
         <span class="menu-title">Dokumen</span>
         </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-        <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-        <span class="menu-title">Documentation</span>
-        </a>
-    </li>
+    </li>    
     @hasanyrole($roles)
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class ActivityLog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'name', 'path', 'file', 'slug'];
+    protected $fillable = ['history_document_id', 'user_id', 'action'];
 
+    public function h_document() {
+        return $this->belongsTo(History_document::class, 'id');
+    }
     public function user() {
         return $this->belongsTo(User::class);
-    }
-    public function history() {
-        return $this->hasMany(History_document::class);
     }
 }

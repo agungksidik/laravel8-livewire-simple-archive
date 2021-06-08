@@ -1,6 +1,13 @@
 @extends('layouts.back', ['title' => 'Document'])
 
-@section('content')   
+@section('content')
+    @if (\Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            <i class="mdi mdi-clipboard-check"></i>
+            {!! \Session::get('success') !!}
+        </div>       
+    @endif
+
 <div class="card">
     <div class="card-body">     
         <div class="row justify-content-between mx-2 my-4">
@@ -37,8 +44,8 @@
                     <th>#</th>
                     <th>Document Name</th>
                     <th>File Name</th>
-                    <th>Create by</th>
-                    <th class="text-center">Created at</th>
+                    <th>Created By</th>
+                    <th class="text-center">Created At</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -46,16 +53,17 @@
                 @foreach($documents as $index => $document)
                     <tr>
                         <td width="30">{{ $index + 1 }}</td>
-                        <td>{{ $document->name }}</td>
                         <td>{{ $document->file }}</td>
-                        <td>{{ $document->user->name }}</td>
+                        <td>{{ $document->path }}</td>
+                        
+                        <td>{{ $document->document->user->name }}</td>
                         <td class="text-center">{{ $document->created_at->format('d F y') }}</td>
                         <td class="text-center" width="200">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Download document" href="{{ route('document.download', [$document->path, $document->file]) }}" class="btn btn-outline-info">
+                            <a target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download document" href="{!! route('document.download', $document->id) !!}" class="btn btn-outline-info">
                                   <i class="mdi mdi-download"></i>
                                 </a>
-                                <a data-toggle="tooltip" data-placement="top" title="" data-original-title="View history document" href="" class="btn btn-outline-info">
+                                <a data-toggle="tooltip" data-placement="top" title="" data-original-title="View history document" href="{{ route('history.index', $document->slug) }}" class="btn btn-outline-info">
                                   <i class="mdi mdi-clock"></i>
                                 </a>
                               </div>
@@ -71,5 +79,5 @@
 
 @section('custom_script')
     <script src="/js/tooltips.js"></script>
-    <script src="/js/popover.js"></script>
+    <script src="/js/popover.js"></script>    
 @endsection

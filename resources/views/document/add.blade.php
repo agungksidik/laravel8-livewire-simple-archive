@@ -42,8 +42,6 @@
 @endsection
 
 @section('custom_script')
-    <!-- End custom js for this page-->
     <script src="/js/jquery.cookie.js" type="text/javascript"></script>
-    <!-- Custom js for this page-->
     <script src="/js/file-upload.js"></script>
 @endsection
