@@ -5,7 +5,7 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 use Spatie\Permission\Models\Role;
 
-class sidebar extends Component
+class Sidebar extends Component
 {
     /**
      * Create a new component instance.
