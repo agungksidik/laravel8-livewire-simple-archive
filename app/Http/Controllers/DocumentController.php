@@ -79,11 +79,11 @@ class DocumentController extends Controller
         return redirect()->route('document.index')->with('success', 'Document was created');
     }
 
-    public function download(Document $document)
-    {        
+    public function download(History_document $document)
+    {
         Download::create([
             'history_document_id' => $document->id,
-            'user_id' => $document->user_id,
+            'user_id' => $document->document->user_id,
             'created_at' => Carbon::now(),
         ]);
 

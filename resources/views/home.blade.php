@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>    
-  <div class="row">
+  {{-- <div class="row">
     <div class="col-12">
       <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-xl-3 grid-margin stretch-card">
@@ -87,7 +87,7 @@
         </div>
       </div>
     </div>   
-  </div>
+  </div> --}}
   <div class="row">
     <div class="col-md-4 grid-margin stretch-card">
       <div class="card">
