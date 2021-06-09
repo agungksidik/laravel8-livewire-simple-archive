@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ActivityLog;
-use App\Models\document;
+use App\Models\Document;
 use App\Models\Download;
 use App\Models\History_document;
 use Carbon\Carbon;
-use Response;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
