@@ -53,11 +53,11 @@
                 @foreach($documents as $index => $document)
                     <tr>
                         <td width="30">{{ $index + 1 }}</td>
+                        <td>{{ $document->document->name }}</td>
                         <td>{{ $document->file }}</td>
-                        <td>{{ $document->path }}</td>
                         
                         <td>{{ $document->document->user->name }}</td>
-                        <td class="text-center">{{ $document->created_at->format('d F y') }}</td>
+                        <td class="text-center">{{ $document->created_at->isoFormat('D MMMM Y HH:mm') }}</td>
                         <td class="text-center" width="200">
                             <div class="btn-group" role="group" aria-label="Basic example">
                             <a target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download document" href="{!! route('document.download', $document->id) !!}" class="btn btn-outline-info">
