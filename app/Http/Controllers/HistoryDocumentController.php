@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ActivityLog;
 use App\Models\Document;
+use App\Models\Download;
 use App\Models\History_document;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -60,9 +61,13 @@ class HistoryDocumentController extends Controller
     {
         $history_document = History_document::where('id', $id)->first();
         $activityLog = ActivityLog::where('history_document_id', $id)->first();
+        $downloadLog = Download::where('history_document_id', $id)->first();
         
         $activityLog->delete();
         $history_document->delete();
+        if(!empty($downloadLog)) {
+            $downloadLog->delete();
+        }
 
         \Storage::delete('public/' . $history_document->path .'/'. $history_document->file);
 

@@ -125,7 +125,7 @@
                 @foreach ($activities as $activity)
                   <tr>
                     <td>{{ $activity->user->name }}</td>
-                    <td>{{ $activity->h_document->file }}</td>                  
+                    <td>{{ $activity->h_document->file }}</td> 
                     <td>  
                       @if ($activity->action == 'create')
                         <label class="badge badge-success">{{ $activity->action }}</label>

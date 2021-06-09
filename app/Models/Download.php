@@ -12,7 +12,7 @@ class Download extends Model
     protected $fillable = ['history_document_id', 'user_id', 'action'];
 
     public function h_document() {
-        return $this->belongsTo(History_document::class, 'id');
+        return $this->belongsTo(History_document::class, 'history_document_id');
     }
     public function user() {
         return $this->belongsTo(User::class);

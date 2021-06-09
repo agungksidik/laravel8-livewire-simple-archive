@@ -44,8 +44,8 @@
                     <th>#</th>
                     <th>Document Name</th>
                     <th>File Name</th>
-                    <th>Created By</th>
-                    <th class="text-center">Created At</th>
+                    <th>Updated By</th>
+                    <th class="text-center">Last Update</th>
                     <th>Action</th>
                 </tr>
                 </thead>
