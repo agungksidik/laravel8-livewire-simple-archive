@@ -12,7 +12,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');   
     });
 });
-Route::group(['middleware' => ['role:super admin|admin']], function () {
+Route::group(['middleware' => ['role:super admin|admin|pimpinan']], function () {
     Route::prefix('role-and-permission')->namespace('Permissions')->group(function() {
         Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
         Route::post('store', [RoleController::class, 'store']);

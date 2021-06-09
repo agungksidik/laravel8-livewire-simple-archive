@@ -83,7 +83,7 @@ class DocumentController extends Controller
     {
         Download::create([
             'history_document_id' => $document->id,
-            'user_id' => $document->document->user_id,
+            'user_id' => auth()->user()->id,
             'created_at' => Carbon::now(),
         ]);
 
