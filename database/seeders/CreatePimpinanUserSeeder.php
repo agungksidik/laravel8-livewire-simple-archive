@@ -25,10 +25,6 @@ class CreatePimpinanUserSeeder extends Seeder
         $pimpinan = Role::create(['name' => 'pimpinan'])
             ->givePermissionTo(['create task', 'edit task', 'show task', 'delete task']);       
 
-        $userPimpinan->assignRole($pimpinan);
-
-        User::factory(50)->create()->each(function ($user) {
-            $user->assignRole('pimpinan'); 
-        });
+        $userPimpinan->assignRole($pimpinan);        
     }
 }
