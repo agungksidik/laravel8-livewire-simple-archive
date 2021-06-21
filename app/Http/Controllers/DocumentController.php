@@ -58,7 +58,7 @@ class DocumentController extends Controller
         ]);
         $documentId = $document->id;
 
-        $new = History_document::create([
+        History_document::create([
             'document_id' => $documentId,
             'name' => $request->name,
             'path' => $path,
@@ -67,10 +67,8 @@ class DocumentController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        $lastId = $new->id;
-
         ActivityLog::create([
-            'history_document_id' => $lastId,
+            'document_id' => $documentId,
             'user_id' => auth()->user()->id,      
             'action' => 'create',      
             'created_at' => Carbon::now(),
@@ -81,11 +79,12 @@ class DocumentController extends Controller
 
     public function download(History_document $document)
     {
-        Download::create([
-            'history_document_id' => $document->id,
+        $download = Download::create([
+            'document_id' => $document->document_id,
             'user_id' => auth()->user()->id,
             'created_at' => Carbon::now(),
         ]);
+        $this->emit('downloaded', $download->id);
 
         $path = $document->path .'/' . $document->file;
 

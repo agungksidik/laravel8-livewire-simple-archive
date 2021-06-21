@@ -95,14 +95,7 @@
           <h4 class="card-title">Download Log</h4>
           <ul class="bullet-line-list">
             @foreach ($downloads as $download)
-              <li>
-                <h6>{{ $download->user->name }}</h6>
-                <p>melakukan download document <strong>{{ $download->h_document->file }}</strong></p>
-                <p class="text-muted mb-4">
-                  <i class="mdi mdi-clock-outline"></i>
-                  {{ $download->created_at->diffForHumans() }}
-                </p>
-              </li>
+              @livewire('dashboard.download', ['download' => $download], key($download->id))
             @endforeach
           </ul>
         </div>
@@ -125,7 +118,7 @@
                 @foreach ($activities as $activity)
                   <tr>
                     <td>{{ $activity->user->name }}</td>
-                    <td>{{ $activity->h_document->file }}</td> 
+                    <td>{{ $activity->document->name }}</td> 
                     <td>  
                       @if ($activity->action == 'create')
                         <label class="badge badge-success">{{ $activity->action }}</label>

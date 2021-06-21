@@ -10,8 +10,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $activities = ActivityLog::with('h_document')->orderBy('id', 'desc')->limit(5)->get();         
-        $download = Download::with('h_document')->orderBy('id', 'desc')->limit(5)->get();
+        $activities = ActivityLog::with('document')->orderBy('id', 'desc')->limit(5)->get();  
+        $download = Download::with('document')->orderBy('id', 'desc')->limit(5)->get();
         return view('home', [
             'activities' => $activities,
             'downloads' => $download

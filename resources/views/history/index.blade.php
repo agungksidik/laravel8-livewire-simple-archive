@@ -141,18 +141,20 @@
                             <td>{{ $history->file }}</td>
                             <td>{{ $history->document->user->name }}</td>
                             <td class="text-center">{{ $history->created_at->isoFormat('D MMMM Y HH:mm') }}</td>
-                            <td class="text-center">
-                                <form action="{{ route('history.delete', $history->id) }}" method="POST">        
-                                    @csrf
-                                    @method('DELETE')      
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete document" type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                            <i class="mdi mdi-delete-forever"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                                
-                            </td>                                               
+                            @if (count($historys) > 1)
+                                <td class="text-center">
+                                    <form action="{{ route('history.delete', $history->id) }}" method="POST">        
+                                        @csrf
+                                        @method('DELETE')      
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete document" type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                <i class="mdi mdi-delete-forever"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    
+                                </td> 
+                            @endif
                         </tr>
                     @endforeach  
                 @endif   

@@ -38,17 +38,19 @@ class HistoryDocumentController extends Controller
         $path = "document/" . $slug;
         $file = $upload->storeAs('public/' . $path, $file_name);
 
-        $new = History_document::create([            
+        History_document::create([            
             'document_id' => $document->id,
             'path' => $document->path,
             'file' => $file_name,            
             'slug' => $document->slug,            
             'created_at' => Carbon::now(),
         ]);
-        $historyId = $new->id;
+        
+        $document->file = $file_name;
+        $document->save();
 
         ActivityLog::create([
-            'history_document_id' => $historyId,
+            'document_id' => $document->id,
             'user_id' => auth()->user()->id,      
             'action' => 'update',      
             'created_at' => Carbon::now(),
@@ -60,19 +62,13 @@ class HistoryDocumentController extends Controller
     public function destroy($id)
     {
         $history_document = History_document::where('id', $id)->first();
-        $activityLog = ActivityLog::where('history_document_id', $id)->first();
-        $downloadLog = Download::where('history_document_id', $id)->first();
         
-        $activityLog->delete();
         $history_document->delete();
-        if(!empty($downloadLog)) {
-            $downloadLog->delete();
-        }
-
+        
         \Storage::delete('public/' . $history_document->path .'/'. $history_document->file);
 
         ActivityLog::create([
-            'history_document_id' => $history_document->document_id,
+            'document_id' => $history_document->document_id,
             'user_id' => auth()->user()->id,      
             'action' => 'delete',      
             'created_at' => Carbon::now(),
