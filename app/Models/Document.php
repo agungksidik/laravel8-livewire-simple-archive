@@ -15,6 +15,10 @@ class Document extends Model
         return $this->belongsTo(User::class);
     }
     public function history() {
-        return $this->hasMany(History_document::class);
+        return $this->hasMany(History_document::class)->latest();
+    }
+    public function lastHistory()
+    {        
+        return $this->hasOne(History_document::class)->orderBy('id', 'DESC');
     }
 }

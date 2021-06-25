@@ -139,7 +139,7 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $history->document->name }}</td>
                             <td>{{ $history->file }}</td>
-                            <td>{{ $history->document->user->name }}</td>
+                            <td>{{ $history->user->name }}</td>
                             <td class="text-center">{{ $history->created_at->isoFormat('D MMMM Y HH:mm') }}</td>
                             @if (count($historys) > 1)
                                 <td class="text-center">

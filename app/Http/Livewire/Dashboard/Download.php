@@ -9,11 +9,14 @@ class Download extends Component
     public $download;
     public $downloadId;
 
-    public $listeners = ['downloaded'];
+    public $listeners = ['downloadAdded' => 'addDownload'];
 
-    public function dowloaded() {
-        dd('work');
+    public function downloadAdded($downloadId) {}
+    
+    public function addDownload() {
+        dd('it works');
     }
+
 
     public function mount($download) {
         $this->download = $download;

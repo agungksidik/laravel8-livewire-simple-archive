@@ -63,7 +63,8 @@ class DocumentController extends Controller
             'name' => $request->name,
             'path' => $path,
             'file' => $file_name,            
-            'slug' => $slug,            
+            'slug' => $slug,   
+            'user_id' => auth()->user()->id,         
             'created_at' => Carbon::now(),
         ]);
 
@@ -79,18 +80,15 @@ class DocumentController extends Controller
 
     public function download(History_document $document)
     {
-        $download = Download::create([
+        Download::create([
             'document_id' => $document->document_id,
             'user_id' => auth()->user()->id,
             'created_at' => Carbon::now(),
         ]);
-        $this->emit('downloaded', $download->id);
 
         $path = $document->path .'/' . $document->file;
 
-        return response()->download(storage_path('app/public/' . $path));
-       
-
+        return response()->download(storage_path('app/public/' . $path)); 
     }
 
     

@@ -16,6 +16,7 @@ class CreateHistoryDocumentsTable extends Migration
         Schema::create('history_documents', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('document_id');
+            $table->unsignedInteger('user_id');
             $table->string('path');
             $table->string('file');
             $table->string('slug');

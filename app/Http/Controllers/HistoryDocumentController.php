@@ -38,15 +38,20 @@ class HistoryDocumentController extends Controller
         $path = "document/" . $slug;
         $file = $upload->storeAs('public/' . $path, $file_name);
 
+        dd(auth()->user()->id);
+
         History_document::create([            
             'document_id' => $document->id,
             'path' => $document->path,
             'file' => $file_name,            
-            'slug' => $document->slug,            
+            'slug' => $document->slug,
+            'user_id' => auth()->user()->id,
             'created_at' => Carbon::now(),
         ]);
         
         $document->file = $file_name;
+        $document->updated_at = Carbon::now();
+        $document->user_id = auth()->user()->id;
         $document->save();
 
         ActivityLog::create([
