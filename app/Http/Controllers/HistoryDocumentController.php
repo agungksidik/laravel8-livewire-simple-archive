@@ -38,8 +38,6 @@ class HistoryDocumentController extends Controller
         $path = "document/" . $slug;
         $file = $upload->storeAs('public/' . $path, $file_name);
 
-        dd(auth()->user()->id);
-
         History_document::create([            
             'document_id' => $document->id,
             'path' => $document->path,
