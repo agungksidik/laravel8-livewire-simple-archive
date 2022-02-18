@@ -30,10 +30,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/agungksidik/laravel8-livewire-simple-archive">
-    <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/react-logo.jpg" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/agungksidik/public-assets/master/logo/laravel-logo.png" alt="Logo" width="100" height="100">
   </a>
   <a href="https://github.com/agungksidik/laravel8-livewire-simple-archive">
-    <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/laravel_logo.png" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/agungksidik/public-assets/master/logo/livewire-logo.png" alt="Logo" width="100" height="100">
   </a>
 
 <h3 align="center">Laravel livewire simple archive</h3>
